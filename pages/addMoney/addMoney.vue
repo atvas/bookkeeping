@@ -10,13 +10,13 @@
 					<u-input v-model="form.name" placeholder="请输入金额" input-align="right" :focus="true" />
 				</u-form-item>
 				<u-form-item label="日期" prop="time">
-					<u-input v-model="form.time" placeholder="请选择日期" @confirm="confirm" input-align="right" @click="show = true"
+					<u-input v-model="form.showTime" placeholder="请选择日期" :disabled="true"   input-align="right" @click="show = true"
 						:focus="true" />
 				</u-form-item>
 			</u-form>
 			<!-- 时间选择 -->
 			<view>
-				<u-picker v-model="show" mode="time"></u-picker>
+				<u-picker v-model="show" @confirm="confirm"  mode="time"></u-picker>
 			</view>
 		</view>
 	</view>
@@ -29,7 +29,8 @@
 				msg: '这是添加页面',
 				form: {
 					name: '',
-					time: ''
+					showTime: '今天'   ,//显示的时间
+					postTime: new Date().getTime() //真实提交的时间
 				},
 				show: false,
 				rules: {
@@ -51,15 +52,20 @@
 						console.log('验证失败');
 					}
 				});
+			},
+			confirm(e){
+				this.form.showTime = e.year  + '-'  + e.month  + '-' + e.day;  //显示的时间
+				this.form.postTime = e.timestamp  //真实的时间
 			}
+			
 		},
 		onReady() {
 			this.$refs.uForm.setRules(this.rules);
-		},
-		confirm(e){
-			console.log(e)
 		}
+	
 	}
+	
+	
 </script>
 
 <style scoped>
