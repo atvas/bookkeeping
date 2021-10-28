@@ -1,6 +1,6 @@
 <template>
-	<view>
-		<u-navbar :is-back="false" title="首页"></u-navbar>
+	<view class="over-body">
+		<u-navbar :is-back="false" title="记账本"></u-navbar>
 		<view class="content">
 			{{msg}}
 		</view>
@@ -21,5 +21,7 @@
 </script>
 
 <style>
-
+	uni-page-wrapper{
+		background-color: #FFFFFF;
+	}
 </style>

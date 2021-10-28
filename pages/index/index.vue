@@ -63,7 +63,9 @@
 				} else if (index == 1) {
 					this.currentTabComponent = 'cent'
 				} else if (index == 2) {
-					this.currentTabComponent = 'addMoney'
+					uni.navigateTo({
+					    url: '../addMoney/addMoney'
+					});
 				}else if (index == 4) {
 					this.currentTabComponent = 'my'
 				}
