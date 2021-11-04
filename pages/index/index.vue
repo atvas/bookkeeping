@@ -33,8 +33,7 @@
 						customIcon: false
 					},
 					{
-						iconPath: "https://cdn.uviewui.com/uview/common/min_button.png",
-						selectedIconPath: "https://cdn.uviewui.com/uview/common/min_button_select.png",
+						iconPath: "https://cdn.uviewui.com/uview/common/min_button_select.png",
 						text: '添加',
 						midButton: true,
 						customIcon: false
