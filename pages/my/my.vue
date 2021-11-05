@@ -1,42 +1,65 @@
 <template>
-	<view class="head">
-		<view class="personal">
-			<view class="userImg">
-				<u-avatar class="tou" size="200" :src="src"></u-avatar>
+	<view>
+		<view class="head">
+			<view class="personal">
+				<view class="userImg">
+					<u-avatar class="tou" size="200" :src="src"></u-avatar>
+				</view>
+				<view class="userName">
+					<text>{{userName}}</text>
+					<text>{{message}}</text>
+				</view>
 			</view>
-			<view class="userName">
-				<text>{{userName}}</text>
-				<text>{{message}}</text>
+			<view class="navTab">
+				<view class="navList" @click="setList">
+					<text>设置</text>
+				</view>
+				<view class="navList" @click="charts">
+					<text>图表</text>
+				</view>
 			</view>
 		</view>
-		<view class="navTab">
-			<view class="navList">
-				<text>详细</text>
-			</view>
-			<view class="navList">
-				<text>概览</text>
-			</view>
-			<view class="navList">
-				<text>设置</text>
-			</view>
+		<view class="countent">
+			<keep-alive>
+				<component v-bind:is="pageTab"></component>
+			</keep-alive>
 		</view>
 	</view>
 </template>
 
 <script>
+	import setList from "./setList";
+	import chart from "./chart"
 	export default {
 		data() {
 			return {
 				src:"../../static/tou3.png",
 				userName:"Penghui.Huang",
-				message:"I like you better every day"
+				message:"I like you better every day",
+				pageTab: "setList"
 			}
 		},
-		onLoad() {
-			
+		activated() {
+			uni.request({
+				url: "https://api.mcloc.cn/love/?type=json", //随机生成一句情话
+				method :'GET',
+				success:(res) => {
+					console.log(res)
+					this.message = res.data.data
+				}
+			});
 		},
 		methods: {
-			
+			setList(){
+				this.pageTab = "setList"
+			},
+			charts(){
+				this.pageTab = "chart"
+			}
+		},
+		components:{
+			setList,
+			chart
 		}
 	}
 </script>
@@ -47,6 +70,7 @@
 		padding: 40rpx;
 		width: 100%;
 		height: 650rpx;
+		margin-bottom: 40rpx;
 		border-bottom-left-radius: 30rpx;
 		border-bottom-right-radius: 30rpx;
 		background-color: #FFFFFF;
@@ -97,7 +121,7 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 33.3%;
+		width: 50%;
 		font-size: 30rpx;
 		font-weight: bold;
 		color: #7f8286;

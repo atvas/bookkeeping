@@ -33,7 +33,22 @@
 				"navigationStyle": "custom" // 隐藏系统导航栏
 			}
 		}
-	],
+	    ,{
+            "path" : "pages/my/setList",
+           "style": {
+           	"navigationStyle": "custom" // 隐藏系统导航栏
+           }
+        }
+        ,{
+            "path" : "pages/my/chart",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
+    ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uView",

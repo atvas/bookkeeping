@@ -11,11 +11,10 @@
 				</u-form-item>
 				<u-form-item label="日期" >
 					<u-input v-model="form.showTime" placeholder="请选择日期" :disabled="true"   input-align="right" @click="show = true"
-						:focus="true" />
+						 />
 				</u-form-item>
 				<u-form-item label="类型" prop="billType">
-					<u-input v-model="form.billType"  :disabled="true"   input-align="right" @click="typeShow = true"
-						:focus="true" />
+					<u-input v-model="form.billType"  :disabled="true"   input-align="right" @click="typeShow = true" />
 				</u-form-item>
 				<u-form-item label-position="top" :border-bottom='false' label="备注" >
 					<u-input v-model="form.message"  :type="type" :border="border" :height="height" :auto-height="autoHeight" />
