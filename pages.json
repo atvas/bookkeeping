@@ -48,6 +48,15 @@
             }
             
         }
+        ,{
+            "path" : "pages/memorandum/memorandum",
+            "style" :                                                                                    
+            {
+                "navigationBarTitleText": "",
+                "enablePullDownRefresh": false
+            }
+            
+        }
     ],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

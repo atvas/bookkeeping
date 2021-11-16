@@ -3,20 +3,19 @@
 		<view class="u-page">
 			<!-- 所有内容的容器 -->
 			<!-- <keep-alive></keep-alive> 缓存当前页面 -->
-			<keep-alive>
 			<component v-bind:is="currentTabComponent"></component>
-			</keep-alive>
 		</view>
 		<!-- 与包裹页面所有内容的元素u-page同级，且在它的下方 -->
-		<u-tabbar v-model="current" :list="list" :mid-button="true" :before-switch="beforeSwitch"></u-tabbar>
+		<u-tabbar v-model="current" :list="list" active-color="rgb(80 152 255)" :mid-button="true"   :before-switch="beforeSwitch"></u-tabbar>
 	</view>
 </template>
 
 <script>
-	import cent from '../center/index';
+	import cent from '../center/index.vue';
 	import addMoney from '../addMoney/addMoney';
-	import overview from '../overview/overview';
-	import my from '../my/my'
+	import overview from '../overview/overview.vue';
+	import my from '../my/my';
+	import memorandum from '../memorandum/memorandum'
 	export default {
 		data() {
 			return {
@@ -25,13 +24,13 @@
 				// 下面是自定义底部table栏的每个list
 				list: [{
 						iconPath: "home",
-						selectedIconPath: "home-fill",
+						selectedIconPath: "home",
 						text: '首页',
 						customIcon: false,
 					},
 					{
-						iconPath: "photo",
-						selectedIconPath: "photo-fill",
+						iconPath: "order",
+						selectedIconPath: "order",
 						text: '明细',
 						customIcon: false
 					},
@@ -43,14 +42,14 @@
 						customIcon: false
 					},
 					{
-						iconPath: "play-right",
-						selectedIconPath: "play-right-fill",
+						iconPath: "bookmark",
+						selectedIconPath: "bookmark",
 						text: '备忘录',
 						customIcon: false,
 					},
 					{
 						iconPath: "account",
-						selectedIconPath: "account-fill",
+						selectedIconPath: "account",
 						text: '我的',
 						customIcon: false,
 					},
@@ -69,7 +68,9 @@
 					uni.navigateTo({
 						url: '../addMoney/addMoney'
 					});
-				} else if (index == 4) {
+				}else if(index == 3){
+					this.currentTabComponent = 'memorandum'
+				} else {
 					this.currentTabComponent = 'my'
 				}
 			}
@@ -78,7 +79,8 @@
 			cent,
 			addMoney,
 			overview,
-			my
+			my,
+			memorandum
 		}
 	}
 </script>
